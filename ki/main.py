@@ -36,66 +36,59 @@ async def new_timer_message(message: types.Message):
         week_days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
         now = datetime.now()
         day = week_days[now.weekday()]
-        match day:
-                case 'Monday':
-                    await bot.send_message(chat_id=message.chat.id, text="1.Гр.Осв. - 202 || 8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 ||  9:30 - 10:20")
-                    await bot.send_message(chat_id=message.chat.id, text="3.Інф. - 311/304 || 10:40 - 11:30")
-                    await bot.send_message(chat_id=message.chat.id, text="4.ФК.(чисельник) - сп.з. || 11:40 - 12:30")
-                    await bot.send_message(chat_id=message.chat.id, text="4.Геогр.(знаменник) - 405 || 11:40 - 12:30")
-                case 'Tuesday':
-                    await bot.send_message(chat_id=message.chat.id, text="1.Хімія(чисельник) - 302 || 8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="1.БЖ(знаменник) - 409 ||  8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="2.Укр.мова - 302 || 9:30 - 10:20")
-                    await bot.send_message(chat_id=message.chat.id, text="3.ФіА - 408 || 10:40 - 11:30")
-                    await bot.send_message(chat_id=message.chat.id, text="4.Укр.літ - 401 || 11:40 - 12:30")
-                case 'Wednesday':
-                    await bot.send_message(chat_id=message.chat.id, text="1.Заруб.літ - 203 || 8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="2.Ін.м. - 107/16 || 9:30 - 10:20")
-                    await bot.send_message(chat_id=message.chat.id, text="3.БЕ - 406 || 10:40 - 11:30")
-                case 'Thursday':
-                    await message.answer(text="1.Соц(чисельник). - 203 || 8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="1.Нічого(Знаменник)")
-                    await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 || 9:30 - 10:20")
-                    await bot.send_message(chat_id=message.chat.id, text="3.К.Пр. - 304 || 10:40 - 11:30")
-                    await bot.send_message(chat_id=message.chat.id, text="4.Гр.Осв.(чисельник) - 202 || 11:40 - 12:30")
-                    await bot.send_message(chat_id=message.chat.id, text="4.Вс.Іст.(знаменник) - 301 || 11:40 - 12:30")
-                    await bot.send_message(chat_id=message.chat.id, text="5.ОМЗ - 201 || 12:50 - 13:40")
-                case 'Friday':
-                    await bot.send_message(chat_id=message.chat.id, text="1.ФК - сп.з. || 8:30 - 9:20")
-                    await bot.send_message(chat_id=message.chat.id, text="2.ФіА - 408 || 9:30 - 10:20")
-                    await bot.send_message(chat_id=message.chat.id, text="3.ЗУ - 204 || 10:40 - 11:30")
-                # case 'Saturday':
-                #     await message.answer(text="Культ. - 107 || 8:30 - 9:50")
-                #     await bot.send_message(chat_id=message.chat.id, text="ФК - сп.з || 10:00 - 11:20")
-                #     await bot.send_message(chat_id=message.chat.id, text="Вс.Історія - 301 || 12:00 - 13:20")
-                #     await bot.send_message(chat_id=message.chat.id, text="БЕ - 210 || 13:20 - 14:50")
-                case other:
-                    await bot.send_message(chat_id=message.chat.id, text="Немає пар по вихідним.Можна бити баклуші")
-
-@dp.message_handler(commands = ['nextpara'])
-async def new_timer_message(message: types.Message):
-    week_days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-    now = datetime.now()
-    day = week_days[now.weekday() + 1]
-    match day:
-        case 'Monday':
+        # match day:
+        #         case 'Monday':
+        #             await bot.send_message(chat_id=message.chat.id, text="1.Гр.Осв. - 202 || 8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 ||  9:30 - 10:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="3.Інф. - 311/304 || 10:40 - 11:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="4.ФК.(чисельник) - сп.з. || 11:40 - 12:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="4.Геогр.(знаменник) - 405 || 11:40 - 12:30")
+        #         case 'Tuesday':
+        #             await bot.send_message(chat_id=message.chat.id, text="1.Хімія(чисельник) - 302 || 8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="1.БЖ(знаменник) - 409 ||  8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="2.Укр.мова - 302 || 9:30 - 10:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="3.ФіА - 408 || 10:40 - 11:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="4.Укр.літ - 401 || 11:40 - 12:30")
+        #         case 'Wednesday':
+        #             await bot.send_message(chat_id=message.chat.id, text="1.Заруб.літ - 203 || 8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="2.Ін.м. - 107/16 || 9:30 - 10:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="3.БЕ - 406 || 10:40 - 11:30")
+        #         case 'Thursday':
+        #             await message.answer(text="1.Соц(чисельник). - 203 || 8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="1.Нічого(Знаменник)")
+        #             await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 || 9:30 - 10:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="3.К.Пр. - 304 || 10:40 - 11:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="4.Гр.Осв.(чисельник) - 202 || 11:40 - 12:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="4.Вс.Іст.(знаменник) - 301 || 11:40 - 12:30")
+        #             await bot.send_message(chat_id=message.chat.id, text="5.ОМЗ - 201 || 12:50 - 13:40")
+        #         case 'Friday':
+        #             await bot.send_message(chat_id=message.chat.id, text="1.ФК - сп.з. || 8:30 - 9:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="2.ФіА - 408 || 9:30 - 10:20")
+        #             await bot.send_message(chat_id=message.chat.id, text="3.ЗУ - 204 || 10:40 - 11:30")
+        #         # case 'Saturday':
+        #         #     await message.answer(text="Культ. - 107 || 8:30 - 9:50")
+        #         #     await bot.send_message(chat_id=message.chat.id, text="ФК - сп.з || 10:00 - 11:20")
+        #         #     await bot.send_message(chat_id=message.chat.id, text="Вс.Історія - 301 || 12:00 - 13:20")
+        #         #     await bot.send_message(chat_id=message.chat.id, text="БЕ - 210 || 13:20 - 14:50")
+        #         case other:
+        #             await bot.send_message(chat_id=message.chat.id, text="Немає пар по вихідним.Можна бити баклуші")
+        if(day == 'Monday'):
             await bot.send_message(chat_id=message.chat.id, text="1.Гр.Осв. - 202 || 8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 ||  9:30 - 10:20")
             await bot.send_message(chat_id=message.chat.id, text="3.Інф. - 311/304 || 10:40 - 11:30")
             await bot.send_message(chat_id=message.chat.id, text="4.ФК.(чисельник) - сп.з. || 11:40 - 12:30")
             await bot.send_message(chat_id=message.chat.id, text="4.Геогр.(знаменник) - 405 || 11:40 - 12:30")
-        case 'Tuesday':
+        elif(day == 'Tuesday'):
             await bot.send_message(chat_id=message.chat.id, text="1.Хімія(чисельник) - 302 || 8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="1.БЖ(знаменник) - 409 ||  8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="2.Укр.мова - 302 || 9:30 - 10:20")
             await bot.send_message(chat_id=message.chat.id, text="3.ФіА - 408 || 10:40 - 11:30")
             await bot.send_message(chat_id=message.chat.id, text="4.Укр.літ - 401 || 11:40 - 12:30")
-        case 'Wednesday':
+        elif(day == 'Wednesday'):
             await bot.send_message(chat_id=message.chat.id, text="1.Заруб.літ - 203 || 8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="2.Ін.м. - 107/16 || 9:30 - 10:20")
             await bot.send_message(chat_id=message.chat.id, text="3.БЕ - 406 || 10:40 - 11:30")
-        case 'Thursday':
+        elif(day == 'Thursday'):
             await message.answer(text="1.Соц(чисельник). - 203 || 8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="1.Нічого(Знаменник)")
             await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 || 9:30 - 10:20")
@@ -103,17 +96,84 @@ async def new_timer_message(message: types.Message):
             await bot.send_message(chat_id=message.chat.id, text="4.Гр.Осв.(чисельник) - 202 || 11:40 - 12:30")
             await bot.send_message(chat_id=message.chat.id, text="4.Вс.Іст.(знаменник) - 301 || 11:40 - 12:30")
             await bot.send_message(chat_id=message.chat.id, text="5.ОМЗ - 201 || 12:50 - 13:40")
-        case 'Friday':
+        elif(day == 'Friday'):
             await bot.send_message(chat_id=message.chat.id, text="1.ФК - сп.з. || 8:30 - 9:20")
             await bot.send_message(chat_id=message.chat.id, text="2.ФіА - 408 || 9:30 - 10:20")
             await bot.send_message(chat_id=message.chat.id, text="3.ЗУ - 204 || 10:40 - 11:30")
-        # case 'Saturday':
-        #     await message.answer(text="Культ. - 107 || 8:30 - 9:50")
-        #     await bot.send_message(chat_id=message.chat.id, text="ФК - сп.з || 10:00 - 11:20")
-        #     await bot.send_message(chat_id=message.chat.id, text="Вс.Історія - 301 || 12:00 - 13:20")
-        #     await bot.send_message(chat_id=message.chat.id, text="БЕ - 210 || 13:20 - 14:50")
-        case other:
+        else:
             await bot.send_message(chat_id=message.chat.id, text="Немає пар по вихідним.Можна бити баклуші")
+
+@dp.message_handler(commands = ['nextpara'])
+async def new_timer_message(message: types.Message):
+    week_days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    now = datetime.now()
+    day = week_days[now.weekday() + 1]
+    # match day:
+    #     case 'Monday':
+    #         await bot.send_message(chat_id=message.chat.id, text="1.Гр.Осв. - 202 || 8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 ||  9:30 - 10:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="3.Інф. - 311/304 || 10:40 - 11:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="4.ФК.(чисельник) - сп.з. || 11:40 - 12:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="4.Геогр.(знаменник) - 405 || 11:40 - 12:30")
+    #     case 'Tuesday':
+    #         await bot.send_message(chat_id=message.chat.id, text="1.Хімія(чисельник) - 302 || 8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="1.БЖ(знаменник) - 409 ||  8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="2.Укр.мова - 302 || 9:30 - 10:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="3.ФіА - 408 || 10:40 - 11:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="4.Укр.літ - 401 || 11:40 - 12:30")
+    #     case 'Wednesday':
+    #         await bot.send_message(chat_id=message.chat.id, text="1.Заруб.літ - 203 || 8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="2.Ін.м. - 107/16 || 9:30 - 10:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="3.БЕ - 406 || 10:40 - 11:30")
+    #     case 'Thursday':
+    #         await message.answer(text="1.Соц(чисельник). - 203 || 8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="1.Нічого(Знаменник)")
+    #         await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 || 9:30 - 10:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="3.К.Пр. - 304 || 10:40 - 11:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="4.Гр.Осв.(чисельник) - 202 || 11:40 - 12:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="4.Вс.Іст.(знаменник) - 301 || 11:40 - 12:30")
+    #         await bot.send_message(chat_id=message.chat.id, text="5.ОМЗ - 201 || 12:50 - 13:40")
+    #     case 'Friday':
+    #         await bot.send_message(chat_id=message.chat.id, text="1.ФК - сп.з. || 8:30 - 9:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="2.ФіА - 408 || 9:30 - 10:20")
+    #         await bot.send_message(chat_id=message.chat.id, text="3.ЗУ - 204 || 10:40 - 11:30")
+    #     # case 'Saturday':
+    #     #     await message.answer(text="Культ. - 107 || 8:30 - 9:50")
+    #     #     await bot.send_message(chat_id=message.chat.id, text="ФК - сп.з || 10:00 - 11:20")
+    #     #     await bot.send_message(chat_id=message.chat.id, text="Вс.Історія - 301 || 12:00 - 13:20")
+    #     #     await bot.send_message(chat_id=message.chat.id, text="БЕ - 210 || 13:20 - 14:50")
+    #     case other:
+    #         await bot.send_message(chat_id=message.chat.id, text="Немає пар по вихідним.Можна бити баклуші")
+    if (day == 'Monday'):
+        await bot.send_message(chat_id=message.chat.id, text="1.Гр.Осв. - 202 || 8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 ||  9:30 - 10:20")
+        await bot.send_message(chat_id=message.chat.id, text="3.Інф. - 311/304 || 10:40 - 11:30")
+        await bot.send_message(chat_id=message.chat.id, text="4.ФК.(чисельник) - сп.з. || 11:40 - 12:30")
+        await bot.send_message(chat_id=message.chat.id, text="4.Геогр.(знаменник) - 405 || 11:40 - 12:30")
+    elif (day == 'Tuesday'):
+        await bot.send_message(chat_id=message.chat.id, text="1.Хімія(чисельник) - 302 || 8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="1.БЖ(знаменник) - 409 ||  8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="2.Укр.мова - 302 || 9:30 - 10:20")
+        await bot.send_message(chat_id=message.chat.id, text="3.ФіА - 408 || 10:40 - 11:30")
+        await bot.send_message(chat_id=message.chat.id, text="4.Укр.літ - 401 || 11:40 - 12:30")
+    elif (day == 'Wednesday'):
+        await bot.send_message(chat_id=message.chat.id, text="1.Заруб.літ - 203 || 8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="2.Ін.м. - 107/16 || 9:30 - 10:20")
+        await bot.send_message(chat_id=message.chat.id, text="3.БЕ - 406 || 10:40 - 11:30")
+    elif (day == 'Thursday'):
+        await message.answer(text="1.Соц(чисельник). - 203 || 8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="1.Нічого(Знаменник)")
+        await bot.send_message(chat_id=message.chat.id, text="2.Матем. - 307 || 9:30 - 10:20")
+        await bot.send_message(chat_id=message.chat.id, text="3.К.Пр. - 304 || 10:40 - 11:30")
+        await bot.send_message(chat_id=message.chat.id, text="4.Гр.Осв.(чисельник) - 202 || 11:40 - 12:30")
+        await bot.send_message(chat_id=message.chat.id, text="4.Вс.Іст.(знаменник) - 301 || 11:40 - 12:30")
+        await bot.send_message(chat_id=message.chat.id, text="5.ОМЗ - 201 || 12:50 - 13:40")
+    elif (day == 'Friday'):
+        await bot.send_message(chat_id=message.chat.id, text="1.ФК - сп.з. || 8:30 - 9:20")
+        await bot.send_message(chat_id=message.chat.id, text="2.ФіА - 408 || 9:30 - 10:20")
+        await bot.send_message(chat_id=message.chat.id, text="3.ЗУ - 204 || 10:40 - 11:30")
+    else:
+        await bot.send_message(chat_id=message.chat.id, text="Немає пар по вихідним.Можна бити баклуші")
 
 @dp.message_handler(commands = ['aboba'])
 async def new_timer_message(message: types.Message):
@@ -122,15 +182,19 @@ async def new_timer_message(message: types.Message):
 @dp.message_handler(commands = ['zamina'])
 async def new_timer_message(message: types.Message):
     week_days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-    now = pd.datetime.now() + pd.DateOffset(days=1)
+    now = datetime.now() + pd.DateOffset(days=1)
     day = week_days[now.weekday()]
-    match(day):
-        case 'Sunday':
-            await message.answer("Який коледж!? Атдіхай")
-        case 'Saturday':
-            await message.answer("Який коледж!? Атдіхай")
-        case other:
-            await message.answer("Сьогодні нема замін")
+    # match(day):
+    #     case 'Sunday':
+    #         await message.answer("Який коледж!? Атдіхай")
+    #     case 'Saturday':
+    #         await message.answer("Який коледж!? Атдіхай")
+    #     case other:
+    #         await message.answer("Сьогодні нема замін")
+    if(day == 'Sunday' or day == 'Saturday'):
+        await bot.send_message(chat_id=message.chat.id, text="Вихідний день")
+    else:
+        await bot.send_message(chat_id=message.chat.id, text="Сьогодні немає замін")
 
 @dp.message_handler(commands = ['help'])
 async def new_timer_message(message: types.Message):
